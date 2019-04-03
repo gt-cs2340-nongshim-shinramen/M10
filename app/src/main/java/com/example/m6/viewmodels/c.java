@@ -22,11 +22,8 @@ public class c {
             int d = (int) distanceBetween(p.getCurrentplanet().getCoordinateX(), p.getCurrentplanet().getCoordinateY(),
                     e.getPlanet().getCoordinateX(), e.getPlanet().getCoordinateY());
             Log.d("d1", String.valueOf(d)+"to "+e.getPlanet().getName()+ "fuel criteria"+p.getFuel() * p.getSpaceship().getEfficiency());
-            //!!!!!!!!!!!!!!!!!!!!!!!need to fix here later with fuel efficiency!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            //below value 30 is just for testing whether it takes only valid item or not
             if (d>0 && d < p.getFuel() * p.getSpaceship().getEfficiency()) {
                 filtered.add(e);
-//                Log.d("")
             }
         }
         return filtered;

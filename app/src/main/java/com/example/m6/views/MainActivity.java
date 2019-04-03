@@ -23,11 +23,9 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    /** Called when the user taps the Configuration button */
     public void makeConfig(View view) {
-        // Do something in response to button
         Intent intent = new Intent(this, ConfigurationActivity.class);
         startActivity(intent);
-
+        finish();
     }
 }

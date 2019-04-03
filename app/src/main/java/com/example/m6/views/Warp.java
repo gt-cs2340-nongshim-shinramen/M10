@@ -1,12 +1,7 @@
 package com.example.m6.views;
 
-import android.app.Activity;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -34,7 +29,7 @@ public class Warp extends AppCompatActivity {
         player = (Player)getIntent().getSerializableExtra("player");
 
         WarpAdapter adapter = new WarpAdapter(player);
-        initRecylerView(adapter);
+        initRecyclerView(adapter);
         adapter.setOnDestinationClickListener(new WarpAdapter.OnDestinationClickListener() {
             @Override
             public void onDestinationClicked(Planet planet, TextView rfuel) {
@@ -42,7 +37,7 @@ public class Warp extends AppCompatActivity {
                 Log.d("1111", rfuel.getText().toString());
                 player.setCurrentplanet(planet);
                 player.setFuel(player.getFuel()-fuel);
-                moveTonewPlanet();
+                moveToNewPlanet();
             }
         });
         menuButton = findViewById(R.id.button_warp_menu);
@@ -62,16 +57,14 @@ public class Warp extends AppCompatActivity {
         intent.putExtra("player", player);
         startActivity(intent);
     }
-    public void moveTonewPlanet(){
-//        Intent intent = new Intent(this, CurrentPlanetActivity.class);
+    public void moveToNewPlanet(){
+        Intent intent = new Intent(this, CurrentPlanetActivity.class);
         player.setWarped(true);
-        Intent intent = new Intent();
         intent.putExtra("player", player);
-        setResult(Activity.RESULT_OK, intent);
+        startActivity(intent);
         finish();
-//        startActivity(intent);
     }
-    private void initRecylerView(WarpAdapter adapter){
+    private void initRecyclerView(WarpAdapter adapter){
         RecyclerView recyclerView  = findViewById(R.id.warp_recycler);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);

@@ -56,7 +56,8 @@ public class ConfigurationActivity extends AppCompatActivity {
         remainingChange(edit_trader_point);
         remainingChange(edit_engineer_point);
 
-        ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(this, R.layout.brand_dropdown, Player.validDifficulty);
+        ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(this,
+                R.layout.brand_dropdown, Player.validDifficulty);
         spinnerArrayAdapter.setDropDownViewResource(R.layout.brand_dropdown);
         difficultySpinner.setAdapter(spinnerArrayAdapter);
 
@@ -88,8 +89,8 @@ public class ConfigurationActivity extends AppCompatActivity {
                     player = new Player(name, nPilot_point, nFighter_point, nTrader_point, nEngineer_point, difficulty, new Universe(), createMap());
                     String showStat = "player "+player.getName()+" is successfully created";
                     Toast.makeText(getApplicationContext(), showStat, Toast.LENGTH_LONG).show();
-                    Log.d("UniverseSystem", player.toString());
                     openUniverse();
+                    finish();
                 }
 
 
@@ -130,24 +131,14 @@ public class ConfigurationActivity extends AppCompatActivity {
     public void openUniverse() {
         Intent intent = new Intent(this, player_information.class);
         intent.putExtra("player", player);
-        finish();
         startActivity(intent);
+        finish();
     }
     public Map<String, Integer> createMap() {
         Map<String, Integer> myMap = new HashMap<>();
         for(Goods g: Goods.values()){
             myMap.put(g.toString().toLowerCase(), 0);
         }
-//        myMap.put("water", 0);
-//        myMap.put("furs",0);
-//        myMap.put("food",0);
-//        myMap.put("ore",0);
-//        myMap.put("games",0);
-//        myMap.put("firearms",0);
-//        myMap.put("medicine",0);
-//        myMap.put("machines",0);
-//        myMap.put("narcotics",0);
-//        myMap.put("robots",0);
         return myMap;
     }
 

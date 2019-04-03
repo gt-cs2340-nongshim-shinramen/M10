@@ -8,9 +8,9 @@ public class SolarSystem implements Serializable {
     private int coordinate_y;
     private int techLevel;
     private int resource;
-    private TechLevel techLevelValue;
-    private Resource resourceValue;
-    private Planet planet;
+    private final TechLevel techLevelValue;
+    private final Resource resourceValue;
+    private final Planet planet;
     SolarSystem(String name, int x, int y, int techLevel, int resource) {
         this.planet = new Planet(name, x, y, techLevel, resource);
         this.name = name;
@@ -62,7 +62,4 @@ public class SolarSystem implements Serializable {
         return planet;
     }
 
-    public String toString(){
-        return name+", ("+coordinate_x+", "+coordinate_y+"), techLevel " +techLevel + " " + techLevelValue +", resource : "+resource + " " + resourceValue;
-    }
 }

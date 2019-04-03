@@ -27,7 +27,7 @@ public class SellDialog extends AppCompatDialogFragment {
         try{
             call = (SellDialogListener) activity;
         } catch(ClassCastException e) {
-            Log.d("test", "activity doesnt implement");
+            Log.d("test", "activity doesn't implement");
         }
     }
     @Override

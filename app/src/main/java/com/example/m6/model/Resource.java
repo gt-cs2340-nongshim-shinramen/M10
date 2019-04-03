@@ -22,7 +22,7 @@ public enum Resource {
     WAR(17),
     PLAGUE(18),
     LACKOFWORKERS(19);
-    private int code;
+    private final int code;
 
     Resource(int n) {
         code = n;

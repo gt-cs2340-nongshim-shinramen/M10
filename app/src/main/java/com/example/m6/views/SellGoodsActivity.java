@@ -31,7 +31,6 @@ public class SellGoodsActivity extends AppCompatActivity implements SellDialog.S
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         player = (Player)getIntent().getSerializableExtra("player");
-        Log.d("player", player.getName()+" is into SellActivity sucessfully" );
 
         menuButton = findViewById(R.id.sell_menu_button);
         menuButton.setOnClickListener(new View.OnClickListener() {
@@ -358,7 +357,6 @@ public class SellGoodsActivity extends AppCompatActivity implements SellDialog.S
     public void openMenu() {
         Intent intent = new Intent(this, MenuActivity.class);
         intent.putExtra("player", player);
-        Log.d("player", player.getName()+" sent from SellGoodsActivity to MenuActivity sucessfully" );
         finish();
         startActivity(intent);
     }

@@ -4,8 +4,8 @@ public enum Spaceship {
     GNAT(15, 0.7),
     FLEA(20, 0.9);
 
-    private int bay;
-    private double efficiency;
+    private final int bay;
+    private final double efficiency;
 
     Spaceship(int bay, double efficiency) {
         this.bay = bay;

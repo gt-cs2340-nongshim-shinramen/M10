@@ -36,7 +36,6 @@ public class CurrentPlanetActivity extends AppCompatActivity {
 
 
         player = (Player) getIntent().getSerializableExtra("player");
-        Log.d("player", player.getName()+" is into CurrentPlanetActivity sucessfully" );
         name = findViewById(R.id.system_name);
         techLevel = findViewById(R.id.system_techLevel);
         resource = findViewById(R.id.system_resource);
@@ -61,7 +60,6 @@ public class CurrentPlanetActivity extends AppCompatActivity {
         player.setWarped(false);
         Intent intent = new Intent(this, MenuActivity.class);
         intent.putExtra("player", player);
-        Log.d("player", player.getName()+" sent from CurrentPlanetactivity to MenuActivity sucessfully" );
         startActivity(intent);
 
     }

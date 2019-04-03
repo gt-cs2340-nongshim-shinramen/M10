@@ -1,19 +1,16 @@
 package com.example.m6.model;
 
-import android.os.Parcel;
-import android.os.Parcelable;
-import android.widget.Space;
-
 import java.io.Serializable;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@SuppressWarnings("ALL")
 public class Player implements Serializable {
 
     private static final long serialVersionUID= 1L;
-    public static List<String> validDifficulty = Arrays.asList("Beginner", "Easy", "Normal", "Hard", "Impossible");
+    public static List<String> validDifficulty = Arrays.asList("Beginner", "Easy", "Normal",
+            "Hard", "Impossible");
     private boolean warped = false;
     private String name, difficulty;
     private Spaceship spaceship;
@@ -31,7 +28,8 @@ public class Player implements Serializable {
         }
         return 0;
     }
-    public Player(String name, int pilot, int fighter, int trader, int engineer, String difficulty, Universe universe, Map<String, Integer> map) {
+    public Player(String name, int pilot, int fighter, int trader, int engineer, String difficulty,
+                  Universe universe, Map<String, Integer> map) {
         this.name = name;
         this.pilot = pilot;
         this.fighter = fighter;
@@ -143,11 +141,5 @@ public class Player implements Serializable {
     public void setWarped(boolean warped) {
         this.warped = warped;
     }
-
-    public String toString(){
-        return String.format("Player %s has pilot point %d, Engineer point %d, Fighter point %d, Trader point %d with %s spaceship, $%d credit and difficulty : %s",
-                getName(), getPilot(), getEngineer(), getFighter(), getTrader(), getSpaceship(), getCredit(), getDifficulty());
-    }
-
 
 }

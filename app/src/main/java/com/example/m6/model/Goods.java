@@ -1,5 +1,6 @@
 package com.example.m6.model;
 
+@SuppressWarnings("ALL")
 public enum Goods {
     WATER(0,0,2,30,3,4,"DROUGHT","LOSOFWATER","DESERT",30,50),
     FURS(0,0,0,250,10,10,"COLD","RICHFAUNA","LIFELESS",230,280),

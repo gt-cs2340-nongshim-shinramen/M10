@@ -28,7 +28,6 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
 
         player = (Player)getIntent().getSerializableExtra("player");
         //this log checks whether player instance import successfully
-        Log.d("player", player.getName()+" is into MenuActivity sucessfully" );
         buyButton = findViewById(R.id.buy_button);
         buyButton.setOnClickListener(this);
 
@@ -41,39 +40,27 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
         playerButton = findViewById(R.id.player_info_button);
         playerButton.setOnClickListener(this);
 
-//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//            }
-//        });
     }
 
     public void openBuyGoods() {
         Intent intent = new Intent(this, BuyGoodsActivity.class);
         intent.putExtra("player", player);
-        Log.d("player", player.getName()+" sent from MenuActivity to buyactivity sucessfully" );
         startActivity(intent);
     }
 
     public void openSellGoods() {
         Intent intent = new Intent(this, SellGoodsActivity.class);
         intent.putExtra("player", player);
-        Log.d("player", player.getName()+" sent from MenuActivity to sellactivity sucessfully" );
         startActivity(intent);
     }
     public void openSystem(){
         Intent intent = new Intent(this, CurrentPlanetActivity.class);
         intent.putExtra("player", player);
-        Log.d("player", player.getName()+" sent from MenuActivity to CurrentPlanetactivity sucessfully" );
         startActivity(intent);
     }
     public void openPlayerInformation(){
         Intent intent = new Intent(this, player_information.class);
         intent.putExtra("player", player);
-        Log.d("player", player.getName()+" sent from MenuActivity to playerInformationActivity sucessfully" );
         startActivity(intent);
     }
     @Override

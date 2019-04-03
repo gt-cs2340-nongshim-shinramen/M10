@@ -30,17 +30,13 @@ public class refuelDialog extends AppCompatDialogFragment {
         try{
             call = (refuelDialog.refuelDialogListener) activity;
         } catch(ClassCastException e) {
-            Log.d("test", "activity doesnt implement");
+            Log.d("test", "activity doesn't implement");
         }
     }
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         Bundle bundle = this.getArguments();
-//        if(bundle!=null) {
-//            price = bundle.getInt("price");
-//            goodstype = bundle.getString("goodstype");
-//        }
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = getActivity().getLayoutInflater();

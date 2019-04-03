@@ -30,8 +30,6 @@ public class player_information extends AppCompatActivity implements refuelDialo
         setSupportActionBar(toolbar);
 
         player = (Player)getIntent().getSerializableExtra("player");
-        //this log checks whether player instance import successfully
-        Log.d("player", player.getName()+" is into MenuActivity sucessfully" );
 
         player_name = findViewById(R.id.player_name);
         player_name.setText(player.getName());
@@ -80,40 +78,17 @@ public class player_information extends AppCompatActivity implements refuelDialo
     public void refillFuel(){
         DialogFragment frag = new refuelDialog();
 
-//        Bundle bundle = new Bundle();
-//        bundle.putString("goodstype", goods);
-//        bundle.putInt("price", price);
-//        frag.setArguments(bundle);
-
-
         frag.show(getSupportFragmentManager(), "dialog");
     }
 
-
-//    public void buyItem(String fuel) {
-//        String input = fuel;
-//
-//        Log.d("1111", input);
-//        spaceship_fuel.setText(" L / 100 L");
-
-//        if(input <= 100-player.getFuel()) {
-//            player.setFuel(player.getFuel()+input);
-//            player.setCredit(player.getCredit()-input*1);
-//            spaceship_fuel.setText(player.getFuel()+ " L / 100 L");
-//        } else {
-//            Toast.makeText(getApplicationContext(), "you are trying to refill more than full tank", Toast.LENGTH_LONG).show();
-//        }
-//    }
     public void openMenu() {
         Intent intent = new Intent(this, MenuActivity.class);
         intent.putExtra("player", player);
-        Log.d("player", player.getName()+" sent from playerInformation to MenuActivity sucessfully" );
         startActivity(intent);
     }
     public void openMarketPlace(){
         Intent intent = new Intent(this, Marketplace.class);
         intent.putExtra("player", player);
-        Log.d("player", player.getName()+" sent from playerInformationActivity to marketplaceActivity sucessfully" );
         startActivity(intent);
     }
     public void openWarp(){

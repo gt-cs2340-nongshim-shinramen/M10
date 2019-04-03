@@ -7,10 +7,12 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
+@SuppressWarnings("ALL")
 public class Planet implements Serializable {
     private String name;
     private double goodsPrice;
-    private int coordinateX, coordinateY;
+    private int coordinateX;
+    private int coordinateY;
     private int techLevel;
     private int resource;
     private Map<String, Integer> stock = new HashMap<>();
@@ -18,7 +20,8 @@ public class Planet implements Serializable {
     public Planet(String name, int coordinateX, int coordinateY, int techLevel, int resource) {
         this(name, 0, coordinateX, coordinateY, techLevel, resource);
     }
-    public Planet(String name, double goodsPrice, int coordinateX, int coordinateY, int techLevel, int resource) {
+    public Planet(String name, double goodsPrice, int coordinateX, int coordinateY, int techLevel,
+                  int resource) {
 
         this.name = name;
         this.goodsPrice = goodsPrice;
@@ -28,7 +31,8 @@ public class Planet implements Serializable {
         this.resource = resource;
         setStock(stock);
     }
-    public Planet(String name, double goodsPrice, int coordinateX, int coordinateY, int techLevel, int resource, Map<String, Integer> stock) {
+    public Planet(String name, double goodsPrice, int coordinateX, int coordinateY, int techLevel,
+                  int resource, Map<String, Integer> stock) {
 
         this.name = name;
         this.goodsPrice = goodsPrice;
@@ -40,8 +44,11 @@ public class Planet implements Serializable {
     }
     public void setStock(Map<String, Integer> map) {
         for(Goods g : Goods.values()) {
-            map.put(g.toString().toLowerCase(), randInt(5, 30));
-            Log.d("stock", String.valueOf(stock.get(g.toString().toLowerCase()))+" "+g.toString().toLowerCase()+" IN "+getName());
+            final int min = 5;
+            final int max = 30;
+            map.put(g.toString().toLowerCase(), randInt(min, max));
+            Log.d("stock", String.valueOf(stock.get(g.toString().toLowerCase()))+" "
+                    +g.toString().toLowerCase()+" IN "+getName());
         }
     }
 

@@ -37,7 +37,6 @@ public class BuyGoodsActivity extends AppCompatActivity implements BuyDialog.Buy
         setSupportActionBar(toolbar);
 
         player = (Player) getIntent().getSerializableExtra("player");
-        Log.d("player", player.getName() + " is into BuyActivity sucessfully");
 
         menuButton = findViewById(R.id.buy_menu_button);
         menuButton.setText("Menu");
@@ -491,9 +490,8 @@ public class BuyGoodsActivity extends AppCompatActivity implements BuyDialog.Buy
     public void openMenu() {
         Intent intent = new Intent(this, MenuActivity.class);
         intent.putExtra("player", player);
-        Log.d("player", player.getName()+" sent from BuyGoodsActivity to MenuActivity sucessfully" );
-        finish();
         startActivity(intent);
+        finish();
     }
 
     public void onBackPressed() {
