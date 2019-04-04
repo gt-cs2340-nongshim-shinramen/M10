@@ -1,9 +1,6 @@
 package com.example.m6.viewmodels;
 
 import android.util.Log;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
 
 import com.example.m6.model.Goods;
 import com.example.m6.model.Planet;
@@ -14,29 +11,49 @@ import com.example.m6.model.SolarSystem;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ *
+ */
 public class c {
 
+    /**
+     *
+     * @param p Player
+     * @param s List of Solar System
+     * @return List of Solar System after filtering
+     */
     public static List<SolarSystem> validPlanet(Player p, List<SolarSystem> s) {
         List<SolarSystem> filtered = new ArrayList<>();
         for (SolarSystem e : s) {
-            int d = (int) distanceBetween(p.getCurrentplanet().getCoordinateX(), p.getCurrentplanet().getCoordinateY(),
-                    e.getPlanet().getCoordinateX(), e.getPlanet().getCoordinateY());
-            Log.d("d1", String.valueOf(d)+"to "+e.getPlanet().getName()+ "fuel criteria"+p.getFuel() * p.getSpaceship().getEfficiency());
-            if (d>0 && d < p.getFuel() * p.getSpaceship().getEfficiency()) {
+            int d = (int) distanceBetween(p.getCurrentplanet().getCoordinateX(),
+                    p.getCurrentplanet().getCoordinateY(), e.getPlanet().getCoordinateX(),
+                    e.getPlanet().getCoordinateY());
+            Log.d("d1", String.valueOf(d)+"to "+e.getPlanet().getName()
+                    + "fuel criteria"+p.getFuel() * p.getSpaceship().getEfficiency());
+            if ((d > 0) && (d < (p.getFuel() * p.getSpaceship().getEfficiency()))) {
                 filtered.add(e);
             }
         }
         return filtered;
     }
     private static double distanceBetween(int x1, int y1, int x2, int y2) {
-        return Math. sqrt((x2-x1)*(x2-x1) + (y2-y1)*(y2-y1));
+        return Math. sqrt(((x2 - x1) * (x2 - x1)) + ((y2 - y1) * (y2 - y1)));
     }
 
+    /**
+     *
+     * @param goods goods of the planet
+     * @param planet planet that player is at
+     * @return price of the goods
+     */
     public static int calculatePrice(Goods goods, Planet planet){
         int resource = planet.getResource();
-        int price = goods.getBasePrice() + goods.getIPL()*(planet.getTechLevel() - goods.getMTLP());
+        int price = goods.getBasePrice() + (goods.getIPL()
+                * (planet.getTechLevel() - goods.getMTLP()));
 
-        boolean head = (Math.random() < 0.5);
+        double coin = 0.5;
+
+        boolean head = (Math.random() < coin);
         if (head) {
             price +=goods.getBasePrice()*((int)(Math.random()*goods.getVar())/100);
         } else {
