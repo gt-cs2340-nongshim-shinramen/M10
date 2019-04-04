@@ -11,23 +11,20 @@ public class Player implements Serializable {
     private static final long serialVersionUID= 1L;
     public static List<String> validDifficulty = Arrays.asList("Beginner", "Easy", "Normal",
             "Hard", "Impossible");
-    private boolean warped = false;
-    private String name, difficulty;
+    private boolean warped;
+    private String name;
+    private String difficulty;
     private Spaceship spaceship;
-    private int pilot, fighter, trader, engineer, credit;
+    private int pilot;
+    private int fighter;
+    private int trader;
+    private int engineer;
+    private int credit;
     private int cargo;
     private int fuel;
     private Map<String, Integer> inven;
     private Universe system;
     private Planet currentplanet;
-    public static int findIndexofDifficulty(String difficulty) {
-        int i = 0;
-        while(i<4) {
-            if(difficulty.equals(validDifficulty.get(i))) {return i;}
-            i++;
-        }
-        return 0;
-    }
     public Player(String name, int pilot, int fighter, int trader, int engineer, String difficulty,
                   Universe universe, Map<String, Integer> map) {
         this.name = name;

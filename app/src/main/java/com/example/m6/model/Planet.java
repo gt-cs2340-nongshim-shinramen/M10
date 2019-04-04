@@ -42,7 +42,7 @@ public class Planet implements Serializable {
         this.resource = resource;
         this.stock = stock;
     }
-    public void setStock(Map<String, Integer> map) {
+    private void setStock(Map<String, Integer> map) {
         for(Goods g : Goods.values()) {
             final int min = 5;
             final int max = 30;
@@ -52,10 +52,9 @@ public class Planet implements Serializable {
         }
     }
 
-    public int randInt(int min, int max) {
+    private int randInt(int min, int max) {
         Random rand = new Random();
-        int randomNum = rand.nextInt((max - min) + 1) + min;
-        return randomNum;
+        return rand.nextInt((max - min) + 1) + min;
     }
 
     public String getName() {

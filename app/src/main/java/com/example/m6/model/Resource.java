@@ -1,5 +1,8 @@
 package com.example.m6.model;
 
+/**
+ *
+ */
 public enum Resource {
 
     NOSPECIALRESOURCES(0),
@@ -28,6 +31,10 @@ public enum Resource {
         code = n;
     }
 
+    /**
+     * The method to get code of resource
+     * @return the code of resource
+     */
     public int getNumber() {
         return code;
     }
