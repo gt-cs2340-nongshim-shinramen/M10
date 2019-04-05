@@ -14,7 +14,10 @@ import java.util.List;
 /**
  *
  */
+<<<<<<< HEAD
 @SuppressWarnings("ALL")
+=======
+>>>>>>> 4d4cc55352e26089eaa8c6c534b2a74250855a82
 public class c {
 
     /**
