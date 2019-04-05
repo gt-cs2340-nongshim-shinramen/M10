@@ -12,10 +12,7 @@ import java.util.List;
  * @author Yeonjoo Yoo
  * @author Semin Choi
  */
-<<<<<<< HEAD
 @SuppressWarnings("ALL")
-=======
->>>>>>> 4d4cc55352e26089eaa8c6c534b2a74250855a82
 public class Universe implements Serializable {
 
     private List<SolarSystem> system = new ArrayList<>();

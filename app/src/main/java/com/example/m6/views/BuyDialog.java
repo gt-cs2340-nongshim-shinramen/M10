@@ -14,16 +14,11 @@ import android.view.View;
 import android.widget.EditText;
 
 import com.example.m6.R;
-
-<<<<<<< HEAD
-@SuppressWarnings("ALL")
-=======
 import java.util.Objects;
 
 /**
  *
  */
->>>>>>> 4d4cc55352e26089eaa8c6c534b2a74250855a82
 public class BuyDialog extends AppCompatDialogFragment {
 
     private int price;
@@ -68,15 +63,11 @@ public class BuyDialog extends AppCompatDialogFragment {
             goodsType = bundle.getString("goodsType");
         }
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(Objects.requireNonNull(getActivity()));
+        AlertDialog.Builder builder =
+                new AlertDialog.Builder(Objects.requireNonNull(getActivity()));
         LayoutInflater inflater = getActivity().getLayoutInflater();
-<<<<<<< HEAD
         @SuppressLint("InflateParams") View view = inflater.inflate(R.layout.buy_dialog, null);
         final EditText input = (EditText)view.findViewById(R.id.buy_input);
-=======
-        View view = inflater.inflate(R.layout.buy_dialog, null);
-        final EditText input = view.findViewById(R.id.buy_input);
->>>>>>> 4d4cc55352e26089eaa8c6c534b2a74250855a82
         builder.setView(view)
                 .setTitle("Enter the amount of items")
                 .setNegativeButton("cancel", new DialogInterface.OnClickListener() {
