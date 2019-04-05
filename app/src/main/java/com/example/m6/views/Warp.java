@@ -15,10 +15,13 @@ import com.example.m6.R;
 import com.example.m6.model.Planet;
 import com.example.m6.model.Player;
 
+/**
+ *
+ */
+@SuppressWarnings("ALL")
 public class Warp extends AppCompatActivity {
-    private Button menuButton;
     private Player player;
-    WarpAdapter adapter;
+    // --Commented out by Inspection (4/4/2019 2:10 PM):WarpAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,7 +43,7 @@ public class Warp extends AppCompatActivity {
                 moveToNewPlanet();
             }
         });
-        menuButton = findViewById(R.id.button_warp_menu);
+        Button menuButton = findViewById(R.id.button_warp_menu);
         menuButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -52,12 +55,12 @@ public class Warp extends AppCompatActivity {
 
         Log.d("player", player.getName());
     }
-    public void openMenu() {
+    private void openMenu() {
         Intent intent = new Intent(this, MenuActivity.class);
         intent.putExtra("player", player);
         startActivity(intent);
     }
-    public void moveToNewPlanet(){
+    private void moveToNewPlanet(){
         Intent intent = new Intent(this, CurrentPlanetActivity.class);
         player.setWarped(true);
         intent.putExtra("player", player);

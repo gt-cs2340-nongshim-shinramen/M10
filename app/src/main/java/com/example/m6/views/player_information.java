@@ -1,5 +1,6 @@
 package com.example.m6.views;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,7 +8,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -16,12 +16,18 @@ import android.widget.Toast;
 import com.example.m6.R;
 import com.example.m6.model.Player;
 
-public class player_information extends AppCompatActivity implements refuelDialog.refuelDialogListener {
+/**
+ * Class that sets up the player information
+ */
+@SuppressWarnings("ALL")
+public class player_information extends AppCompatActivity
+        implements refuelDialog.refuelDialogListener {
 
     private TextView player_name, player_planet, player_credits, spaceship_fuel;
 
     Button menu_button, marketplace_button, warp_button, refuel_button;
     private Player player;
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,22 +81,37 @@ public class player_information extends AppCompatActivity implements refuelDialo
             }
         });
     }
+
+    /**
+     * This method creates the option to refill the fuel
+     */
     public void refillFuel(){
         DialogFragment frag = new refuelDialog();
 
         frag.show(getSupportFragmentManager(), "dialog");
     }
 
+    /**
+     * This method opens the main menu
+     */
     public void openMenu() {
         Intent intent = new Intent(this, MenuActivity.class);
         intent.putExtra("player", player);
         startActivity(intent);
     }
+
+    /**
+     * This method opens the MarketPlace
+     */
     public void openMarketPlace(){
         Intent intent = new Intent(this, Marketplace.class);
         intent.putExtra("player", player);
         startActivity(intent);
     }
+
+    /**
+     * This method opens the Warp option to warp to other planets
+     */
     public void openWarp(){
         Intent intent = new Intent(this, Warp.class);
         intent.putExtra("player", player);
@@ -111,6 +132,7 @@ public class player_information extends AppCompatActivity implements refuelDialo
         }
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void buyFuel(String fuel) {
         int input = Integer.parseInt(fuel);
@@ -122,7 +144,8 @@ public class player_information extends AppCompatActivity implements refuelDialo
             spaceship_fuel.setText(player.getFuel()+ " L / 100 L");
             player_credits.setText(String.valueOf(player.getCredit()));
         } else {
-            Toast.makeText(getApplicationContext(), "you are trying to refill more than full tank", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(),
+                    "you are trying to refill more than full tank", Toast.LENGTH_LONG).show();
         }
     }
 }

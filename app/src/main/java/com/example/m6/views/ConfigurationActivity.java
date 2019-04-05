@@ -5,7 +5,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -22,6 +21,10 @@ import com.example.m6.model.Universe;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Class for configuring information for a new player.
+ */
+@SuppressWarnings("ALL")
 public class ConfigurationActivity extends AppCompatActivity {
 
     private EditText edit_name;
@@ -71,8 +74,11 @@ public class ConfigurationActivity extends AppCompatActivity {
                 String sEngineer_point = edit_engineer_point.getText().toString();
 
 
-                if(name.trim().isEmpty()||sPilot_point.trim().isEmpty()||sFighter_point.trim().isEmpty()||sTrader_point.trim().isEmpty()||sEngineer_point.trim().isEmpty()) {
-                    Toast.makeText(getApplicationContext(), "input field can not be blank", Toast.LENGTH_LONG).show();
+                if(name.trim().isEmpty()||sPilot_point.trim().isEmpty()
+                        ||sFighter_point.trim().isEmpty()||sTrader_point.trim().isEmpty()
+                        ||sEngineer_point.trim().isEmpty()) {
+                    Toast.makeText(getApplicationContext(), "input field can not be blank",
+                            Toast.LENGTH_LONG).show();
                     return;
                 }
 
@@ -84,9 +90,11 @@ public class ConfigurationActivity extends AppCompatActivity {
                 String difficulty = difficultySpinner.getSelectedItem().toString();
 
                 if (sum != 16) {
-                    Toast.makeText(getApplicationContext(), "the sum of skill point should be 16", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),
+                            "the sum of skill point should be 16", Toast.LENGTH_LONG).show();
                 } else {
-                    player = new Player(name, nPilot_point, nFighter_point, nTrader_point, nEngineer_point, difficulty, new Universe(), createMap());
+                    player = new Player(name, nPilot_point, nFighter_point, nTrader_point,
+                            nEngineer_point, difficulty, new Universe(), createMap());
                     String showStat = "player "+player.getName()+" is successfully created";
                     Toast.makeText(getApplicationContext(), showStat, Toast.LENGTH_LONG).show();
                     openUniverse();
@@ -97,6 +105,11 @@ public class ConfigurationActivity extends AppCompatActivity {
             }
         });
     }
+
+    /**
+     * This method makes sure the user doesn't assign more than 16 skill points.
+     * @param editText The text of the skill points allotted.
+     */
     public void remainingChange(final EditText editText) {
         editText.addTextChangedListener(new TextWatcher() {
             @Override
@@ -112,28 +125,41 @@ public class ConfigurationActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
                 if(!editText.getText().toString().equals("")){
-                    int pilot = (!edit_pilot_point.getText().toString().equals(""))? Integer.parseInt(edit_pilot_point.getText().toString()):0;
-                    int fighter = (!edit_fighter_point.getText().toString().equals(""))? Integer.parseInt(edit_fighter_point.getText().toString()):0;
-                    int trader = (!edit_trader_point.getText().toString().equals(""))? Integer.parseInt(edit_trader_point.getText().toString()):0;
-                    int engineer = (!edit_engineer_point.getText().toString().equals(""))? Integer.parseInt(edit_engineer_point.getText().toString()):0;
+                    int pilot = (!edit_pilot_point.getText().toString().equals(""))?
+                            Integer.parseInt(edit_pilot_point.getText().toString()):0;
+                    int fighter = (!edit_fighter_point.getText().toString().equals(""))?
+                            Integer.parseInt(edit_fighter_point.getText().toString()):0;
+                    int trader = (!edit_trader_point.getText().toString().equals(""))?
+                            Integer.parseInt(edit_trader_point.getText().toString()):0;
+                    int engineer = (!edit_engineer_point.getText().toString().equals(""))?
+                            Integer.parseInt(edit_engineer_point.getText().toString()):0;
 
                     int currPoint= pilot+fighter+trader+engineer;
 
                     remaining.setText(String.valueOf(totalPoint-currPoint));
                 }
                 if(Integer.parseInt(remaining.getText().toString())<0){
-                    Toast.makeText(getApplicationContext(), "you can not assign more than 16 points", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "you can not assign more than "
+                            + "16 points", Toast.LENGTH_LONG).show();
                 }
             }
         });
     }
-    // open Next page which is Universe
+
+    /**
+     * This method opens the next page which is the Universe.
+     */
     public void openUniverse() {
         Intent intent = new Intent(this, player_information.class);
         intent.putExtra("player", player);
         startActivity(intent);
         finish();
     }
+
+    /**
+     * This method creates a hash map of the goods/resources.
+     * @return hash map of the goods/resources
+     */
     public Map<String, Integer> createMap() {
         Map<String, Integer> myMap = new HashMap<>();
         for(Goods g: Goods.values()){

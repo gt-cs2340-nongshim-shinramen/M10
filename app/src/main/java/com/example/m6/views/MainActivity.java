@@ -8,6 +8,9 @@ import android.widget.Button;
 
 import com.example.m6.R;
 
+/**
+ * Class for the main activity
+ */
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -17,13 +20,17 @@ public class MainActivity extends AppCompatActivity {
 
         final Button conf_button = findViewById(R.id.conf_button);
         conf_button.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View v) {
-                makeConfig(v);
+                makeConfig();
             }
         });
     }
 
-    public void makeConfig(View view) {
+    /**
+     * This method creates the configuration
+     */
+    public void makeConfig() {
         Intent intent = new Intent(this, ConfigurationActivity.class);
         startActivity(intent);
         finish();

@@ -1,11 +1,11 @@
 package com.example.m6.views;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.AppCompatDialogFragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,11 +14,22 @@ import android.widget.EditText;
 
 import com.example.m6.R;
 
+import java.util.Objects;
+
+/**
+ *
+ */
+@SuppressWarnings("ALL")
 public class refuelDialog extends AppCompatDialogFragment {
-    int fuel;
+    // --Commented out by Inspection (4/4/2019 1:58 PM):int fuel;
 
     public interface refuelDialogListener{
 //        void onInputData(String input);
+
+        /**
+         *
+         * @param fuel fuel amount being refueled
+         */
         void buyFuel(String fuel);
     }
 
@@ -38,10 +49,11 @@ public class refuelDialog extends AppCompatDialogFragment {
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         Bundle bundle = this.getArguments();
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        AlertDialog.Builder builder =
+                new AlertDialog.Builder(Objects.requireNonNull(getActivity()));
         LayoutInflater inflater = getActivity().getLayoutInflater();
-        View view = inflater.inflate(R.layout.buy_dialog, null);
-        final EditText input = (EditText)view.findViewById(R.id.buy_input);
+        @SuppressLint("InflateParams") View view = inflater.inflate(R.layout.buy_dialog, null);
+        final EditText input = view.findViewById(R.id.buy_input);
         builder.setView(view)
                 .setTitle("Enter the amount of fuel")
                 .setNegativeButton("cancel", new DialogInterface.OnClickListener() {

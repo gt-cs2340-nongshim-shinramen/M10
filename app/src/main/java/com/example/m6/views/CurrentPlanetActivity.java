@@ -1,14 +1,10 @@
 package com.example.m6.views;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -18,6 +14,10 @@ import com.example.m6.model.Player;
 import com.example.m6.model.Resource;
 import com.example.m6.model.TechLevel;
 
+/**
+ * Information page of the Current Planet
+ */
+@SuppressWarnings("ALL")
 public class CurrentPlanetActivity extends AppCompatActivity {
 
     private Button menuButton;
@@ -56,6 +56,9 @@ public class CurrentPlanetActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * This method opens the menu page
+     */
     public void openMenu() {
         player.setWarped(false);
         Intent intent = new Intent(this, MenuActivity.class);

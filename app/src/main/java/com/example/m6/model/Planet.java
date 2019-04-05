@@ -63,12 +63,6 @@ public class Planet implements Serializable {
     public void setName(String name) {
         this.name = name;
     }
-    public double getGoodsPrice() {
-        return goodsPrice;
-    }
-    public void setGoodsPrice(double goodsPrice) {
-        this.goodsPrice = goodsPrice;
-    }
     public int getCoordinateX() {
         return coordinateX;
     }

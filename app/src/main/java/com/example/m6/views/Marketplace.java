@@ -13,10 +13,13 @@ import android.widget.Button;
 import com.example.m6.R;
 import com.example.m6.model.Player;
 
+/**
+ * Class for the MarketPlace which contains Buy and Sell options.
+ */
+@SuppressWarnings("ALL")
 public class Marketplace extends AppCompatActivity {
 
     private static final String TAG = "Marketplace";
-    private Button buyButton, sellButton, menuButton;
     private Player player;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,9 +33,9 @@ public class Marketplace extends AppCompatActivity {
 
         initRecyclerView();
 
-        buyButton = findViewById(R.id.button_marketplace_buy);
-        sellButton = findViewById(R.id.button_marketplace_sell);
-        menuButton = findViewById(R.id.button_marketplace_menu);
+        Button buyButton = findViewById(R.id.button_marketplace_buy);
+        Button sellButton = findViewById(R.id.button_marketplace_sell);
+        Button menuButton = findViewById(R.id.button_marketplace_menu);
 
         buyButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
@@ -54,16 +57,28 @@ public class Marketplace extends AppCompatActivity {
         });
 
     }
+
+    /**
+     * This method opens the Buy option tab.
+     */
     public void openBuy() {
         Intent intent = new Intent(this, BuyGoodsActivity.class);
         intent.putExtra("player", player);
         startActivity(intent);
     }
+
+    /**
+     * This method opens the Sell option tab.
+     */
     public void openSell() {
         Intent intent = new Intent(this, SellGoodsActivity.class);
         intent.putExtra("player", player);
         startActivity(intent);
     }
+
+    /**
+     * This method opens the main menu.
+     */
     public void openMenu() {
         Intent intent = new Intent(this, MenuActivity.class);
         intent.putExtra("player", player);
